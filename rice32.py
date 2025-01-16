@@ -176,10 +176,12 @@ def main():
         if stones:
             stone_image = np.copy(image)
             for stone in stones:
-                if len(stone) == 4:  # Ensure we have (x, y, w, h)
-                    x, y, w, h = stone
-                    cv2.rectangle(stone_image, (x, y), (x+w, y+h), (0, 0, 255), 2)
+                # Get bounding box for each stone
+                x, y, w, h = cv2.boundingRect(stone)
+                # Draw rectangle around the stone
+                cv2.rectangle(stone_image, (x, y), (x + w, y + h), (0, 0, 255), 2)
             st.image(stone_image, caption="Detected Stones Highlighted", use_column_width=True)
+
         else:
             st.write("No stones detected.")
         
@@ -191,5 +193,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
