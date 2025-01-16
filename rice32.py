@@ -43,7 +43,7 @@ def detect_stones_by_rgb(image):
     stones = []
     stone_details = []
 
-    MIN_STONE_AREA = 10
+    MIN_STONE_AREA = 30
     MAX_STONE_AREA = 1000000
 
     for cnt in contours:
