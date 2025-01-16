@@ -29,7 +29,8 @@ def detect_stones_by_rgb(image):
     height, width = image.shape[:2]
     rgb_values = rgb_image.reshape((-1, 3))
 
-    dark_threshold = 150
+    dark_threshold = 170
+    
     dark_mask = np.all(rgb_values < dark_threshold, axis=1)
     dark_mask = dark_mask.reshape((height, width))
     dark_mask = dark_mask.astype(np.uint8) * 255
