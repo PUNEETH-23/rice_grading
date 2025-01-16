@@ -29,7 +29,7 @@ def detect_stones_by_rgb(image):
     height, width = image.shape[:2]
     rgb_values = rgb_image.reshape((-1, 3))
 
-    dark_threshold = 60
+    dark_threshold = 100
     dark_mask = np.all(rgb_values < dark_threshold, axis=1)
     dark_mask = dark_mask.reshape((height, width))
     dark_mask = dark_mask.astype(np.uint8) * 255
@@ -43,7 +43,7 @@ def detect_stones_by_rgb(image):
     stone_details = []
 
     MIN_STONE_AREA = 10
-    MAX_STONE_AREA = 1000
+    MAX_STONE_AREA = 10000
 
     for cnt in contours:
         area = cv2.contourArea(cnt)
